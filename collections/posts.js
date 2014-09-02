@@ -16,6 +16,21 @@ Posts.allow({
     }
 });*/
 
+/*A REVOIR chapt Editing posts !!!!!!!!!!!!
+supposition : si une tentative d'update/remove sur Posts
+se fait, cette fonction est appelée (permissions.js)*/
+Posts.allow({
+    update: ownsDocumentTest,
+    remove: ownsDocumentTest
+});
+
+Posts.deny({
+    update: function(userId, post, fieldNames) {
+        // may only edit the following two fields:
+        return (_.without(fieldNames, 'url', 'title').length > 0);
+    }
+});
+
 Meteor.methods({
     post: function(postAttributes) {
         var user = Meteor.user(),
@@ -40,7 +55,8 @@ Meteor.methods({
         var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'), {
             userId: user._id,
             author: user.username,
-            submitted: new Date().getTime()
+            submitted: new Date().getTime(),
+            commentsCount: 0
         });
 
         var postId = Posts.insert(post);
