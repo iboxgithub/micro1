@@ -16,7 +16,7 @@ Posts.allow({
     }
 });*/
 
-/*A REVOIR chapt Editing posts !!!!!!!!!!!!
+/*#TODO A REVOIR chapt Editing posts !!!!!!!!!!!!
 supposition : si une tentative d'update/remove sur Posts
 se fait, cette fonction est appelée (permissions.js)*/
 Posts.allow({

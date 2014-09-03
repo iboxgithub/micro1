@@ -23,7 +23,7 @@ Template.postSubmit.events({
         Method is done.SERVER SIDE*/
         Meteor.call('post', post, function(error, id) {
             // display the error to the user
-            throwError(error.reason);
+            throwError(error.reason); //#TODO NOT WORKING !!!
             if (error.error === 302){
                 Router.go('postPage', {_id: error.details})
             }
