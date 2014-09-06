@@ -3,11 +3,7 @@
         {{#each posts}}
             {{> postItem}}
         {{/each}}
-        <script>
-            console.log("toto"+"frt");
-            console.log("hey "+"{{nextPath}}"+" non");
-            console.log("hey "+"{{toto}}"+" non");
-        </script>
+
         {{#if nextPath}}
             <a class="load-more" href="{{nextPath}}">Load more</a>
         {{/if}}
