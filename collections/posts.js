@@ -16,9 +16,7 @@ Posts.allow({
     }
 });*/
 
-/*#TODO A REVOIR chapt Editing posts !!!!!!!!!!!!
-supposition : si une tentative d'update/remove sur Posts
-se fait, cette fonction est appelée (permissions.js)*/
+/*explications dans permissions.js*/
 Posts.allow({
     update: ownsDocumentTest,
     remove: ownsDocumentTest
