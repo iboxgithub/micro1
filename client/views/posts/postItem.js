@@ -33,7 +33,7 @@ Template.postItem.helpers({
         var attributes = {};
         if (! _.isUndefined(post.position)) {
            // attributes.class = "post invisible";
-        //} else { TODO not working cf chapt Animations
+        //} else { //TODO not working cf chapt Animations
             var delta = post.position - newPosition;
             attributes.style = "top: " + delta + "px";
             if (delta === 0)
