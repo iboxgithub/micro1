@@ -24,10 +24,9 @@ Template.postSubmit.events({
         Meteor.call('post', post, function(error, id) {
             // display the error to the user
             if(error){
-                throwError(error.reason); //affiche bandeau erreur
-
-            if (error.error === 302)
-                Router.go('postPage', {_id: error.details})
+                Errors.throw(error.reason); //affiche bandeau erreur
+                if (error.error === 302)
+                    Router.go('postPage', {_id: error.details})
             }
             else {
                 Router.go('postPage', {_id: id});
