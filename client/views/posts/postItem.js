@@ -27,19 +27,31 @@ Template.postItem.helpers({
         }
     },
     attributes: function() {
-        //TODO relire fin chap Animations
+        /*
+        _.extend(destination, *source)
+        dans l'objet Positions (vide) on étend
+        this (Posts) avec le post en cours
+         */
         var post = _.extend({}, Positions.findOne({postId: this._id}), this);
         var newPosition = post._rank * POST_HEIGHT;
         var attributes = {};
-        if (! _.isUndefined(post.position)) {
-           // attributes.class = "post invisible";
-        //} else { //TODO not working cf chapt Animations
+        if (_.isUndefined(post.position)) {
+            attributes.class = "post invisible";
+        } else {
             var delta = post.position - newPosition;
             attributes.style = "top: " + delta + "px";
+            //on remet l'élément où il avait été auto déplacé pour qu'il "glisse"
             if (delta === 0)
                 attributes.class = "post animate"
         }
         Meteor.setTimeout(function() {//position is defined here
+            /*
+             Modify one or more documents in the collection,
+             or insert one if no matching documents were found.
+             Returns an object with keys numberAffected
+             (the number of documents modified) and insertedId
+             (the unique _id of the document that was inserted, if any).
+             */
             Positions.upsert({postId: post._id}, {$set: {position: newPosition}})
         });
         return attributes;
@@ -47,7 +59,7 @@ Template.postItem.helpers({
 });
 Template.postItem.events({
     'click .upvotable': function(e) {
-        e.preventDefault();
+        e.preventDefault(); //browser ne recharge pas la page
         Meteor.call('upvote', this._id);
     }
 });
