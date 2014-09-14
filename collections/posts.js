@@ -59,6 +59,17 @@ Meteor.methods({
             votes: 0
         });
 
+        // shorten link URL
+        //Access inside a method invocation.
+        // Boolean value, true if this invocation is a stub.
+        //donc si faux c'est qu'on n'executera ce code que quand il s'exécute
+        // "en mode server" (latency compensation
+        if(!this.isSimulation){
+            var shortUrl = Bitly.shortenURL(post.url);
+            if(post.url && shortUrl)
+                post.shortUrl = shortUrl;
+        }
+
         var postId = Posts.insert(post);
 
         return postId;

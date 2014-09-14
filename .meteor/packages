@@ -12,4 +12,6 @@ accounts-password
 mrt:iron-router-progress
 ibox:errors
 rss
+http
+bitly
 

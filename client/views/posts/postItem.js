@@ -26,6 +26,9 @@ Template.postItem.helpers({
             return 'disabled';
         }
     },
+    postUrl: function(){
+        return this.shortUrl ? this.shortUrl : this.url;
+    },
     attributes: function() {
         /*
         _.extend(destination, *source)
