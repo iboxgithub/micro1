@@ -23,6 +23,7 @@ htmljs@1.0.0
 http@1.0.4
 ibox:errors@1.0.0
 id-map@1.0.0
+intercom@0.0.0
 iron:core@0.3.4
 iron:dynamic-template@0.4.1
 iron:layout@0.4.1
